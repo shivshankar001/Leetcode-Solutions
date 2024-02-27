@@ -2,11 +2,12 @@ class Solution {
 public:
     int rec(int i, vector<int>& nums)
     {
+        //base case
         if(i<2)
         {
             return 0;
         }
-        
+        //compute
         int ans = 0;
         if(nums[i]+nums[i-2] == 2*nums[i-1])
         {
@@ -17,7 +18,7 @@ public:
             
             //ans = max(ans, rec(i-1, nums));
         }
-        
+        //return
         return ans;
     }
     int numberOfArithmeticSlices(vector<int>& nums) {
