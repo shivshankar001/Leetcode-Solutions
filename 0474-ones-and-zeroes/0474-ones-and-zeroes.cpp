@@ -1,29 +1,60 @@
+#include<bits/stdc++.h>
 class Solution {
 public:
-    int sol(vector<string>& strs, int m, int n, int idx, vector<vector<vector<int>>> &dp)
+    vector<pair<int, int>> v;
+    int rec(int i, vector<string>& strs, int m, int n, vector<vector<vector<int>>> &dp)
     {
-        if(idx >= strs.size())
+        //base case
+        if(i>=strs.size())
         {
             return 0;
         }
-        
-        if(dp[m][n][idx] != -1)
+        //cache check
+        if(dp[i][m][n] != -1)
         {
-            return dp[m][n][idx];
+            return dp[i][m][n];
         }
-        
-        int cnt_0 = count(strs[idx].begin(), strs[idx].end(), '0');
-        int cnt_1 = strs[idx].size() - cnt_0;
-        
-        if(m-cnt_0 >= 0 && n-cnt_1 >= 0)
+        //compute
+        int dt=0, t=0;
+        dt = rec(i+1, strs, m, n, dp);
+        if(m>=v[i].first && n>=v[i].second)
         {
-            return dp[m][n][idx] = max(1+sol(strs, m-cnt_0, n-cnt_1, idx+1, dp), sol(strs, m, n, idx+1, dp));
+            t = 1 + rec(i+1, strs, m-v[i].first, n-v[i].second, dp);
         }
-        
-        return dp[m][n][idx] = sol(strs, m, n, idx+1, dp);
+        //save and return
+        return dp[i][m][n]=max(dt, t);
     }
     int findMaxForm(vector<string>& strs, int m, int n) {
-        vector<vector<vector<int>>> dp(m+1, vector<vector<int>>(n+1, vector<int>(strs.size()+1, -1)));
-        return sol(strs, m, n, 0, dp);
+        // vector<pair<int, int>> v;
+        int num = strs.size();
+        int maxi = 0;
+        int tcnt0 = 0, tcnt1 = 0;
+        for(int i=0; i<strs.size(); i++)
+        {
+            int cnt0 = 0, cnt1 = 0;
+            for(int j=0; j<strs[i].size(); j++)
+            {
+                if(strs[i][j] == '0')
+                {
+                    cnt0++;
+                    tcnt0++;
+                }
+                else
+                {
+                    cnt1++;
+                    tcnt1++;
+                }
+            }
+            if(strs[i].size()>maxi)
+            {
+                maxi = strs[i].size();
+            }
+            v.push_back({cnt0, cnt1});
+        }
+        cout<<tcnt0<<endl;
+        // vector<vector<vector<int>>> dp(num+1, vector<vector<int>>(maxi, vector<int>(maxi, -1)));
+        vector<vector<vector<int>>> dp(num, vector<vector<int>>(m+1, vector<int>(n+1, -1)));
+        // cout<<1<<endl;
+        return rec(0, strs, m, n, dp);
     }
 };
