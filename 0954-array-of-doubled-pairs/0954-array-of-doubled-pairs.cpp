@@ -23,18 +23,6 @@ public:
         for(int i=0; i<arr.size(); i++)
         {
             int temp = arr[i]*2;
-            // if(mp.find(temp) == mp.end())
-            // {
-            // }
-            // else
-            // {
-            //     if(mp[arr[i]]-1 >= 0 && mp[temp]-1 >= 0)
-            //     {
-            //         mp[arr[i]]--;
-            //         mp[temp]--;
-            //         cnt++;
-            //     }
-            // }
             if(mp[arr[i]]-1 >= 0 && mp[temp]-1 >= 0)
             {
                 mp[arr[i]]--;
