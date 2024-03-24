@@ -4,14 +4,6 @@ public:
         int n = difficulty.size();
         int m = worker.size();
         
-        // vector<pair<int, int>> v; 
-        // for(int i=0; i<n; i++)
-        // {
-        //     v.push_back({difficulty[i], profit[i]});
-        // }
-        // sort(v.begin(), v.end());
-        // sort(difficulty.begin(), difficulty.end());
-        
         int ans = 0;
         for(int i=0; i<m; i++)
         {
@@ -22,10 +14,6 @@ public:
                 {
                     maxi = max(maxi, profit[j]);
                 }
-                // else
-                // {
-                //     break;
-                // }
             }
             ans += maxi;
         }
