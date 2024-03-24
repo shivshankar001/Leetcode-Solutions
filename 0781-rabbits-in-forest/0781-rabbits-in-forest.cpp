@@ -19,22 +19,6 @@ public:
             }
             else
             {
-                // if(mp[it] >= (it+1))
-                // {
-                //     if(mp[it]%(it+1) == 0)
-                //     {
-                //         ans += (mp[it]/(it+1))*(it+1);
-                //     }
-                //     else
-                //     {
-                //         int temp = (mp[it]/(it+1))+1;
-                //         ans += (temp*(it+1));
-                //     }
-                // }
-                // else
-                // {
-                //     ans += (it+1);
-                // }
                 if(mp[it]%(it+1) == 0)
                 {
                     ans += (mp[it]/(it+1))*(it+1);
