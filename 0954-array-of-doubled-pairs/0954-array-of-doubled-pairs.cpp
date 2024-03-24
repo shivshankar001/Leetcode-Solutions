@@ -13,6 +13,7 @@ public:
             }
             mp[arr[i]]++;
         }
+        
         if(cnt0%2 != 0)
         {
             return false;
@@ -22,25 +23,25 @@ public:
         for(int i=0; i<arr.size(); i++)
         {
             int temp = arr[i]*2;
-            if(mp.find(temp) == mp.end())
+            // if(mp.find(temp) == mp.end())
+            // {
+            // }
+            // else
+            // {
+            //     if(mp[arr[i]]-1 >= 0 && mp[temp]-1 >= 0)
+            //     {
+            //         mp[arr[i]]--;
+            //         mp[temp]--;
+            //         cnt++;
+            //     }
+            // }
+            if(mp[arr[i]]-1 >= 0 && mp[temp]-1 >= 0)
             {
-                // return false;
-                // cout<<"bol"<<endl;
-            }
-            else
-            {
-                cout<<"temp : "<<temp<<endl;
-                cout<<mp[temp]-1<<endl;
-                if(mp[arr[i]]-1 >= 0 && mp[temp]-1 >= 0)
-                {
-                    mp[arr[i]]--;
-                    mp[temp]--;
-                    cnt++;
-                    cout<<"bol"<<endl;
-                }
+                mp[arr[i]]--;
+                mp[temp]--;
+                cnt++;
             }
         }
-        cout<<cnt;
         if(cnt >= arr.size()/2)
             return true;
         return false;
