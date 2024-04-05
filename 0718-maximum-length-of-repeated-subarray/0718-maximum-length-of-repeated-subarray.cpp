@@ -12,9 +12,11 @@ public:
         {
             return dp[i][j];
         }
+        
         int ans = 0;
         rec(i+1, j, nums1, nums2, dp);
         rec(i, j+1, nums1, nums2, dp);
+        
         if(nums1[i] == nums2[j])
         {
             ans = max(ans, 1 + rec(i+1, j+1, nums1, nums2, dp));
@@ -23,7 +25,9 @@ public:
         {
             ans = 0;
         }
+        
         ans1 = max(ans1, ans);
+        
         return dp[i][j] = ans;
         
     }
