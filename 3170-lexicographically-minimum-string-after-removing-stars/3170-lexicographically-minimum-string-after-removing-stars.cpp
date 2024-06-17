@@ -7,11 +7,9 @@ public:
         set<int> st;
         for(int i=0; i<n; i++)
         {
-            // cout<<"dncdskl"<<endl;
             if(s[i] != '*')
             {
                 v[s[i]-97].insert(i);
-                // cout<<"snlka"<<endl;
             }
             else
             {
