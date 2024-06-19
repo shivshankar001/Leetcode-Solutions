@@ -8,10 +8,10 @@ public:
         }
         
         int n = v[0].size();
-        vector<vector<int>> cnt(n);
+        vector<vector<long long>> cnt(n);
         for(int i=0; i<n; i++)
         {
-            unordered_map<char, int> mp;
+            unordered_map<char, long long> mp;
             for(int j=0; j<nums.size(); j++)
             {
                 mp[v[j][i]]++;
