@@ -43,12 +43,10 @@ public:
         {
             for(int j=0; j<pre[i].size(); j++)
             {
-                // cout<<pre[i][j]<<" ";
                 long long x = pre[i].size();
                 long long temp = pre[i][x-1]-pre[i][j];
                 ans += (cnt[i][j]*temp);
             }
-            // cout<<endl;
         }
         
         return ans;
