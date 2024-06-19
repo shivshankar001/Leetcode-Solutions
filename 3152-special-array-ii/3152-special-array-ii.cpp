@@ -15,11 +15,6 @@ public:
         {
             int l = queries[i][0];
             int r = queries[i][1];
-            if(l == r)
-            {
-                ans.push_back(true);
-                continue;
-            }
             cout<<l<<" "<<r<<endl;
             auto it = lower_bound(v.begin(), v.end(), l);
             if(it == v.end() || (*it) >= r)
