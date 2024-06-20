@@ -7,8 +7,8 @@ public:
         if(dp[i][j]!=-1)return dp[i][j];
         
         int p=INT_MIN, np=INT_MIN;
-        if(i+1<n){p = (grid[i+1][j]-grid[i][j]) + rec(i+1, j, grid, dp);}
-        if(j+1<m){np = (grid[i][j+1]-grid[i][j]) + rec(i, j+1, grid, dp);}
+        if(i+1<n) p=(grid[i+1][j]-grid[i][j]) + rec(i+1, j, grid, dp);
+        if(j+1<m) np=(grid[i][j+1]-grid[i][j]) + rec(i, j+1, grid, dp);
         
         return dp[i][j] = max(0, max(p, np));
     }
