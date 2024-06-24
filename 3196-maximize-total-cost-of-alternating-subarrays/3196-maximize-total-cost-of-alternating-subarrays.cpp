@@ -1,10 +1,9 @@
 class Solution {
 public:
     long long maximumTotalCost(vector<int>& nums) {
-        int n = nums.size();
-        vector<long long> dp(n+1);
+        vector<long long> dp(nums.size()+1);
         dp[0] = nums[0];
-        for(int i=1; i<n; i++)
+        for(int i=1; i<nums.size(); i++)
         {
             dp[i] = dp[i-1] + nums[i];
             if(i-2 >= 0)
@@ -18,6 +17,6 @@ public:
             }
         }
         
-        return dp[n-1];
+        return dp[nums.size()-1];
     }
 };
