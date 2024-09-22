@@ -19,24 +19,30 @@ public:
         {
             auto node = q.front();
             q.pop_front();
-            int x1 = node.first;
-            int y1 = node.second;
-            int dir = grid[x1][y1];
+            int x = node.first;
+            int y = node.second;
             for (int k=0; k<4; k++)
             {
-                int x2 = dx[k] + x1;
-                int y2 = dy[k] + y1;
-
-                if (check(x2, y2, m, n) && dist[x1][y1] + (grid[x1][y1] != (k + 1)) < dist[x2][y2])
+                int nx = dx[k] + x;
+                int ny = dy[k] + y;
+                if (check(nx, ny, m, n))
                 {
-                    dist[x2][y2] = dist[x1][y1] + (grid[x1][y1] != (k + 1));
-                    if ((grid[x1][y1] == (k + 1)))
+                    int cost = 0;
+                    if(k+1!=grid[x][y])
                     {
-                        q.push_front({x2, y2});
+                        cost = 1;
                     }
-                    else
+                    if(dist[nx][ny]>dist[x][y]+cost)
                     {
-                        q.push_back({x2, y2});
+                        dist[nx][ny] = dist[x][y]+cost;
+                        if(cost==0)
+                        {
+                            q.push_front({nx, ny});
+                        }
+                        else
+                        {
+                            q.push_back({nx, ny});
+                        }
                     }
                 }
             }
