@@ -23,17 +23,20 @@ public:
             int x = it.first;
             int y = it.second;
             q.pop_front();
-            
             for(int k=0; k<4; k++)
             {
                 int nx = x + dx[k];
                 int ny = y + dy[k];
                 if(check(nx, ny, n, m))
                 {
-                    int cost = grid[nx][ny];
+                    int cost = 0;
+                    if(grid[nx][ny]==1)
+                    {
+                        cost = 1;
+                    }
                     if(dis[nx][ny]>dis[x][y]+cost)
                     {
-                        dis[nx][ny]=dis[x][y]+cost;
+                        dis[nx][ny] = dis[x][y]+cost;
                         if(cost==0)
                         {
                             q.push_front({nx, ny});
