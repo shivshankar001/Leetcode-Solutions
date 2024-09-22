@@ -22,7 +22,7 @@ public:
             int x1 = node.first;
             int y1 = node.second;
             int dir = grid[x1][y1];
-            for (auto k : {0, 1, 2, 3})
+            for (int k=0; k<4; k++)
             {
                 int x2 = dx[k] + x1;
                 int y2 = dy[k] + y1;
