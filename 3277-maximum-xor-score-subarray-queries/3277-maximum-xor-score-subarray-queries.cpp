@@ -21,14 +21,6 @@ public:
                 dp[i][j] = max({dp[i+1][j], dp[i][j-1], dp[i][j]});
             }
         }
-        // for(int i=0; i<n; i++)
-        // {
-        //     for(int j=0; j<n; j++)
-        //     {
-        //         cout<<dp[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
         int sz = queries.size();
         vector<int> ans(sz);
         for(int i=0; i<sz; i++)
