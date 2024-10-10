@@ -1,3 +1,4 @@
+using ii = pair<int, int>;
 class Solution {
 public:
     class comparasion {
@@ -7,38 +8,51 @@ public:
             return a.first > b.first;
         };
     };
-    bool isPossible(vector<int>& nums) {
-        priority_queue<pair<int, int>, vector<pair<int, int>>, comparasion> qe;
-        int i = 0;
-        while(i < nums.size()) {
-            if(qe.empty()) {
-                qe.push({nums[i], 1});
-                i++;
+    bool isPossible(vector<int>& a) {
+        int n = a.size();
+        priority_queue<ii, vector<ii>, comparasion> pq;
+        for(int i=0; i<n; i++)
+        {
+            if(pq.empty())
+            {
+                pq.push({a[i], 1});
             }
-            else {
-                pair<int, int> tmp = qe.top();
-                if(nums[i] == tmp.first) {
-                    qe.push({nums[i], 1});//add a new sequence
-                    i++;
+            else
+            {
+                cout<<"i : "<<i<<endl;
+                cout<<pq.top().first<<" "<<pq.top().second<<endl;
+                if(pq.top().first == a[i])
+                {
+                    pq.push({a[i], 1});
                 }
-                else if(nums[i] == tmp.first + 1) {
-                    qe.pop();
-                    qe.push({nums[i], tmp.second + 1});//update the top of the heap
-                    i++;
+                else if(pq.top().first+1 == a[i])
+                {
+                    auto it = pq.top();
+                    cout<<"here"<<endl;
+                    // cout<<it.first<<" "<<it.second<<endl;
+                    pq.pop();
+                    cout<<"pushing : "<<a[i]<<" "<<it.second+1<<endl;
+                    pq.push({a[i], it.second+1});
                 }
-                else {
-                    if(tmp.second < 3) {//false
+                else
+                {
+                    if(pq.top().second < 3) 
+                    {
                         return false;
                     }
-                    qe.pop();
+                    pq.pop();
+                    i--;
                 }
             }
         }
-        while(!qe.empty()) {
-            if(qe.top().second < 3) {
+        while(!pq.empty())
+        {
+            cout<<pq.top().second<<endl;
+            if(pq.top().second<3)
+            {
                 return false;
             }
-            qe.pop();
+            pq.pop();
         }
         return true;
     }
