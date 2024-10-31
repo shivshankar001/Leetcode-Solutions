@@ -43,11 +43,6 @@ public:
         }
         memset(fr, -1, sizeof(fr));
         dfs(0, -1, s);
-        for(int i=0; i<n; i++)
-        {
-            cout<<fpar[i]<<" ";
-        }
-        cout<<endl;
         for(int i=1; i<n; i++)
         {
             ng[fpar[i]].push_back(i);
